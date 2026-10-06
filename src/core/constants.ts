@@ -55,3 +55,12 @@ export const ALERT_VIEW: Record<AlertState, { color: number; alpha: number }> = 
   busqueda: { color: 0xff9800, alpha: 0.1 },
   'alerta maxima': { color: 0xf44336, alpha: 0.16 },
 };
+
+export const CAMERA_VIEW: Record<AlertState, number> = {
+  tranquilo: 1,
+  sospecha: 0.95,
+  busqueda: 0.9,
+  'alerta maxima': 0.85,
+};
+
+export const CAMERA_SMOOTH_PER_SEC = 6;

@@ -1,9 +1,12 @@
 import Phaser from 'phaser';
 import { AlertSystem, computeRisk, isInCone } from '../domain/alert';
+import { lerp, smoothT, zoomForState } from '../domain/camera';
 import { Patrol, type PatrolConfig } from '../domain/patrol';
 import {
   ALERT_CONFIG,
   ALERT_VIEW,
+  CAMERA_SMOOTH_PER_SEC,
+  CAMERA_VIEW,
   GAME_HEIGHT,
   GAME_WIDTH,
   GOAL,
@@ -49,6 +52,8 @@ export class GameScene extends Phaser.Scene {
   }
 
   create(): void {
+    this.cameras.main.setBounds(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
     for (const wall of WALLS) {
       this.add
         .rectangle(wall.x + wall.w / 2, wall.y + wall.h / 2, wall.w, wall.h, 0x3a4757)
@@ -101,6 +106,16 @@ export class GameScene extends Phaser.Scene {
     this.updateGuard(delta);
     this.updatePlayer(delta);
     this.updateAlert(delta);
+    this.updateCamera(delta);
+  }
+
+  private updateCamera(delta: number): void {
+    const camera = this.cameras.main;
+    const t = smoothT(delta, CAMERA_SMOOTH_PER_SEC);
+    const targetZoom = zoomForState(this.alert.getState(), CAMERA_VIEW);
+    camera.scrollX = lerp(camera.scrollX, this.player.x - GAME_WIDTH / 2, t);
+    camera.scrollY = lerp(camera.scrollY, this.player.y - GAME_HEIGHT / 2, t);
+    camera.zoom = lerp(camera.zoom, targetZoom, t);
   }
 
   private updateAlert(delta: number): void {

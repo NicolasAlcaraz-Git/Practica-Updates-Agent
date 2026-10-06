@@ -1,6 +1,6 @@
 # Evidencia — Upgrade 02: Medidor de alerta y estados del nivel
 
-Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **implementacion completa, verificacion Prompt3 hecha; pendiente verificacion visual del estudiante y commits**.
+Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **cerrada — verificacion visual confirmada por el estudiante e integrada en `068e205`**.
 
 ## Versiones
 
@@ -51,7 +51,7 @@ Cambios nuevos: barra de alerta (arriba a la izquierda), rotulo de estado con va
 2. **Transicion**: al acercarse al guardia (especialmente frente a su mirada) la barra crece y cambia verde -> amarillo -> naranja -> rojo al cruzar 25/50/75; el rotulo muestra `sospecha`, `busqueda`, `alerta maxima` con el valor redondeado; el fondo se tiñe progresivamente de rojo.
 3. **Estado posterior**: al alejarse mas alla del radio de riesgo (260 px) la barra baja hasta 0, vuelve a `tranquilo` y el tinte desaparece.
 
-Registro de la observacion del estudiante: pendiente (fila en "Decisiones humanas").
+Registro de la observacion del estudiante: **confirmado 2026-10-06** — "la barra funciona perfecta cumpliendo los puntos 1 2 y 3".
 
 ## Limites de esta evidencia
 
@@ -68,7 +68,7 @@ Registro de la observacion del estudiante: pendiente (fila en "Decisiones humana
 | Aprobar spec de la update 02 | Estudiante | 2026-10-06 | Prompt1-02 + spec |
 | Autorizar plan y ciclo Prompt2 | Estudiante | 2026-10-06 | "seguir Prompt2 como hicimos anteriormente" |
 | Commits de los incrementos 1-4 | Estudiante | Pendiente | El agente no crea commits |
-| Verificacion visual (`npm.cmd run dev`) | Estudiante | Pendiente | Completar seccion visual 1-3 |
+| Verificacion visual (`npm.cmd run dev`) | Estudiante | 2026-10-06 | Confirmada: puntos 1-3 OK (commit `068e205`) |
 
 ## Decision recomendada del agente
 
