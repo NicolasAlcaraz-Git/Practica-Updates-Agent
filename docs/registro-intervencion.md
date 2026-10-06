@@ -26,7 +26,10 @@ Registra cada ciclo relevante de herramienta. No copies razonamientos internos d
 | 2026-10-06 / `6500b92` | Aprobar plan de Fase 0; dejar Prompt1-3 para despues | Lectura de `Prompt1.md`-`Prompt3.md` | `Prompt1.md` tiene plantilla con marcadores; `Prompt2.md` y `Prompt3.md` vacios | Aprobar plan de Fase 0 |
 | 2026-10-06 / `1fb8cd3` | Ejecutar Fase 0: punto inicial, auditoria, specs, permisos, gitignore | Edicion de docs y `.gitignore` | Documentos de proceso completados con hechos verificados | Aceptar (commit `1aa75bb`, `1fb8cd3`) |
 | 2026-10-06 / `1fb8cd3` | Prompt1: exploracion de solo lectura del upgrade 01 y preguntas de diseno | Lectura + `question` | Sin codigo base (`package.json`/`src/` inexistentes); decisiones: base+patrulla juntas, tramo A-B, barrido en pausa, sin deteccion | Aceptar decisiones de diseno |
-| 2026-10-06 / `1fb8cd3` | Redactar spec del upgrade 01 en `docs/upgrades/01-patrulla/spec.md` | Edicion de archivo | Spec borrador con 10 criterios y evidencia prevista; sin implementar | [Pendiente: revisar spec] |
+| 2026-10-06 / `1fb8cd3` | Redactar spec del upgrade 01 en `docs/upgrades/01-patrulla/spec.md` | Edicion de archivo | Spec borrador con 10 criterios y evidencia prevista; sin implementar | Aceptar (commit `127695a`) |
+| 2026-10-06 / `127695a` | Prompt2: incremento 1 (scaffold stack base) + Prompt3 checkpoint | `npm init`, `npm install`, edicion de configs y `evidencia.md` | typecheck/build/test exit 0; checkpoint de criterios 1, 2, 8 | Aceptar (commit `dcf1965`) |
+| 2026-10-06 / `dcf1965` | Completar la update 01: incrementos 2-5 | Edicion de `src/` y `tests/` | Escena del corredor, dominio `Patrol` (7 tests), guardia integrado con indicador de mirada, constantes `GUARD_*` | Aceptar ("termina la update 01") |
+| 2026-10-06 / `dcf1965` | Prompt3: contraste de los 10 criterios + evidencia final | Comandos de validacion + edicion de `evidencia.md` | 8/8 tests; criterios 1,2,3,7,8,10 cumplidos; 4,5,6 parciales (visual); 9 pendiente de commit | [Pendiente: verificacion visual + commits] |
 
 ## Correcciones y acciones rechazadas
 
