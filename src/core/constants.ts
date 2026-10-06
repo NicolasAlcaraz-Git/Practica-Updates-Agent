@@ -17,8 +17,15 @@ export const WALLS: Wall[] = [
   { x: 600, y: 200, w: 60, h: 300 },
 ];
 
-export const PLAYER_START = { x: 90, y: 270 };
+export const COVERS: Wall[] = [
+  { x: 200, y: 150, w: 70, h: 70 },
+  { x: 200, y: 390, w: 70, h: 70 },
+  { x: 740, y: 330, w: 70, h: 70 },
+];
 
+export const OBSTACLES: Wall[] = [...WALLS, ...COVERS];
+
+export const PLAYER_START = { x: 90, y: 270 };
 export const PLAYER_RADIUS = 12;
 
 export const PLAYER_SPEED = 220;

@@ -1,12 +1,14 @@
 import Phaser from 'phaser';
-import { AlertSystem, computeRisk, isInCone } from '../domain/alert';
+import { AlertSystem } from '../domain/alert';
 import { lerp, smoothT, zoomForState } from '../domain/camera';
 import { Patrol, type PatrolConfig } from '../domain/patrol';
+import { riskForGuardView, sightPolygon, visibleToGuard } from '../domain/vision';
 import {
   ALERT_CONFIG,
   ALERT_VIEW,
   CAMERA_SMOOTH_PER_SEC,
   CAMERA_VIEW,
+  COVERS,
   GAME_HEIGHT,
   GAME_WIDTH,
   GOAL,
@@ -15,6 +17,7 @@ import {
   GUARD_SPEED,
   GUARD_SWEEP_HALF_MS,
   GUARD_TO,
+  OBSTACLES,
   PLAYER_RADIUS,
   PLAYER_SPEED,
   PLAYER_START,
@@ -44,6 +47,7 @@ export class GameScene extends Phaser.Scene {
   private alertBar!: Phaser.GameObjects.Rectangle;
   private alertLabel!: Phaser.GameObjects.Text;
   private ambient!: Phaser.GameObjects.Rectangle;
+  private sight!: Phaser.GameObjects.Graphics;
   private keys!: Keys;
   private goalReached = false;
 
@@ -57,6 +61,12 @@ export class GameScene extends Phaser.Scene {
     for (const wall of WALLS) {
       this.add
         .rectangle(wall.x + wall.w / 2, wall.y + wall.h / 2, wall.w, wall.h, 0x3a4757)
+        .setOrigin(0.5, 0.5);
+    }
+
+    for (const cover of COVERS) {
+      this.add
+        .rectangle(cover.x + cover.w / 2, cover.y + cover.h / 2, cover.w, cover.h, 0x6b5b45)
         .setOrigin(0.5, 0.5);
     }
 
@@ -95,6 +105,7 @@ export class GameScene extends Phaser.Scene {
       .setDepth(21);
     this.guard = this.add.circle(start.x, start.y, PLAYER_RADIUS, 0xb03030);
     this.gazeIndicator = this.add.circle(start.x, start.y, 5, 0xf0c040);
+    this.sight = this.add.graphics().setDepth(5);
 
     const keyboard = this.input.keyboard;
     if (keyboard) {
@@ -106,7 +117,29 @@ export class GameScene extends Phaser.Scene {
     this.updateGuard(delta);
     this.updatePlayer(delta);
     this.updateAlert(delta);
+    this.updateSight();
     this.updateCamera(delta);
+  }
+
+  private updateSight(): void {
+    const guardPos = this.patrol.getPosition();
+    const points = sightPolygon(
+      guardPos,
+      this.patrol.getGazeDirection(),
+      RISK_CONE_HALF_DEG,
+      OBSTACLES,
+      RISK_RADIUS,
+      16,
+    );
+    this.sight.clear();
+    if (points.length < 2) {
+      return;
+    }
+    this.sight.fillStyle(0xf0c040, 0.12);
+    this.sight.fillPoints(
+      points.map((p) => new Phaser.Math.Vector2(p.x, p.y)),
+      true,
+    );
   }
 
   private updateCamera(delta: number): void {
@@ -122,14 +155,17 @@ export class GameScene extends Phaser.Scene {
     const guardPos = this.patrol.getPosition();
     const playerPos = { x: this.player.x, y: this.player.y };
     const distance = Math.hypot(playerPos.x - guardPos.x, playerPos.y - guardPos.y);
-    const inCone = isInCone(
+    const visible = visibleToGuard(
       guardPos,
       this.patrol.getGazeDirection(),
       playerPos,
+      OBSTACLES,
+      RISK_RADIUS,
       RISK_CONE_HALF_DEG,
     );
-    const risk = computeRisk(distance, inCone, RISK_RADIUS, RISK_CONE_BONUS);
+    const risk = riskForGuardView(distance, visible, RISK_RADIUS, RISK_CONE_BONUS);
     this.alert.tick(delta, risk);
+    this.player.setFillStyle(visible ? 0xf44336 : 0xe8eef5);
 
     const level = this.alert.getLevel();
     const state = this.alert.getState();
@@ -187,7 +223,7 @@ export class GameScene extends Phaser.Scene {
 
   private collides(x: number, y: number): boolean {
     const r = PLAYER_RADIUS;
-    return WALLS.some(
+    return OBSTACLES.some(
       (wall) =>
         x + r > wall.x && x - r < wall.x + wall.w && y + r > wall.y && y - r < wall.y + wall.h,
     );
