@@ -71,3 +71,18 @@ export const CAMERA_VIEW: Record<AlertState, number> = {
 };
 
 export const CAMERA_SMOOTH_PER_SEC = 6;
+
+export const ESCAPE_VIEW = {
+  escape: {
+    message: 'ESCAPE JUSTO',
+    color: '#8ee68e',
+    flashDurationMs: 500,
+    flashColor: { r: 140, g: 255, b: 170 },
+  },
+  normal: {
+    message: 'LLEGASTE',
+    color: '#e8eef5',
+    flashDurationMs: 0,
+    flashColor: { r: 0, g: 0, b: 0 },
+  },
+} as const;

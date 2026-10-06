@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { AlertSystem } from '../domain/alert';
 import { lerp, smoothT, zoomForState } from '../domain/camera';
+import { evaluateEscape } from '../domain/escape';
 import { Patrol, type PatrolConfig } from '../domain/patrol';
 import { riskForGuardView, sightPolygon, visibleToGuard } from '../domain/vision';
 import {
@@ -9,6 +10,7 @@ import {
   CAMERA_SMOOTH_PER_SEC,
   CAMERA_VIEW,
   COVERS,
+  ESCAPE_VIEW,
   GAME_HEIGHT,
   GAME_WIDTH,
   GOAL,
@@ -50,6 +52,7 @@ export class GameScene extends Phaser.Scene {
   private sight!: Phaser.GameObjects.Graphics;
   private keys!: Keys;
   private goalReached = false;
+  private levelClosed = false;
 
   constructor() {
     super('game');
@@ -164,7 +167,9 @@ export class GameScene extends Phaser.Scene {
       RISK_CONE_HALF_DEG,
     );
     const risk = riskForGuardView(distance, visible, RISK_RADIUS, RISK_CONE_BONUS);
-    this.alert.tick(delta, risk);
+    if (!this.levelClosed) {
+      this.alert.tick(delta, risk);
+    }
     this.player.setFillStyle(visible ? 0xf44336 : 0xe8eef5);
 
     const level = this.alert.getLevel();
@@ -218,7 +223,34 @@ export class GameScene extends Phaser.Scene {
     if (!this.goalReached && this.insideGoal(this.player.x, this.player.y)) {
       this.goalReached = true;
       this.goal.setFillStyle(0x2e7d32);
+      const outcome = evaluateEscape(this.alert.getLevel(), this.goalReached);
+      if (outcome === 'escape') {
+        this.levelClosed = true;
+        this.alert = new AlertSystem(ALERT_CONFIG);
+        const view = ESCAPE_VIEW.escape;
+        this.cameras.main.flash(
+          view.flashDurationMs,
+          view.flashColor.r,
+          view.flashColor.g,
+          view.flashColor.b,
+        );
+        this.showEndMessage(view.message, view.color);
+      } else if (outcome === 'normal') {
+        const view = ESCAPE_VIEW.normal;
+        this.showEndMessage(view.message, view.color);
+      }
     }
+  }
+
+  private showEndMessage(message: string, color: string): void {
+    this.add
+      .text(GAME_WIDTH / 2, GAME_HEIGHT / 2, message, {
+        fontFamily: 'monospace',
+        fontSize: '48px',
+        color,
+      })
+      .setOrigin(0.5)
+      .setDepth(30);
   }
 
   private collides(x: number, y: number): boolean {
