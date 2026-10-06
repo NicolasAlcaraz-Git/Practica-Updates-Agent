@@ -43,6 +43,7 @@ Un prototipo jugable donde: la patrulla se anticipa con pausas y mirada direccio
 
 ## Preguntas abiertas
 
-- Nombre definitivo del proyecto (`Silent Corridor` vs. "Guardia de Sigilo" en `Prompt1.md`).
+- Version exacta de Phaser 3 y de las herramientas del stack (se fija al crear el proyecto en el upgrade 01).
 - Umbrales numericos de alerta (se resuelven en la spec del upgrade 02).
-- Version exacta de Phaser 3 y de las herramientas del stack (se fija al crear el proyecto en la Fase 1).
+
+Nota 2026-10-06: el nombre definitivo del proyecto es `Silent Corridor` (confirmado por el estudiante).

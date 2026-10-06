@@ -27,8 +27,7 @@
 
 ## Preguntas abiertas
 
-- [Confirmar nombre definitivo: `Silent Corridor` vs. "Guardia de Sigilo" usado en `Prompt1.md`.]
-- [Definir controles y dimensiones del corredor con el prototipo base.]
+- [Definir controles y dimensiones del corredor con el prototipo base (upgrade 01).]
 - [Definir umbrales exactos de alerta en la spec del upgrade 02.]
 
 El GDD delimita la intencion de diseno. La especificacion y el plan convierten esa intencion en una intervencion tecnica verificable.
