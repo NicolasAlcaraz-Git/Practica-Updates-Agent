@@ -13,6 +13,13 @@ Registra cada ciclo relevante de herramienta. No copies razonamientos internos d
 - Cambios preexistentes: ninguno en archivos trackeados; los cuatro archivos sin trackear son ajenos a la plantilla inicial.
 - Validacion de referencia: no existe (`package.json` ausente, sin build, sin pruebas). Documentado en `auditoria-repositorio.md`.
 
+## Cierre de Fase 0 (2026-10-06)
+
+- Commit de cierre: `1aa75bb` ("Fase 0: documentacion de proceso, gitignore y punto inicial") en `main`, sin push.
+- Incluye: `README.md`, `GDD.md`, `.gitignore`, `CONSIGNAS.md` y los seis documentos de `docs/` de proceso.
+- Quedan sin trackear a proposito: `Prompt1.md`, `Prompt2.md`, `Prompt3.md` (prompts de fases futuras, pendiente de decision del estudiante).
+- Validacion de referencia de Fase 0: no ejecutable todavia; se ejecuta al cerrar la Fase 1 (`typecheck`, `build`, `test`).
+
 | Fecha o version | Instruccion resumida | Accion o herramienta | Resultado observable | Decision humana |
 |---|---|---|---|---|
 | 2026-10-06 / `6500b92` | Leer `CONSIGNAS.md` y docs de proceso; preguntar motor, proyecto y permisos | Lectura de archivos + `question` | Contexto definido: Phaser+TS, prototipo minimo, 5 upgrades del catalogo, permisos "todo salvo push" | Aceptar respuestas de contexto |
