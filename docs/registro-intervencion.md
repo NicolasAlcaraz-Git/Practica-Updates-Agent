@@ -37,7 +37,9 @@ Registra cada ciclo relevante de herramienta. No copies razonamientos internos d
 | 2026-10-06 / `068e205` | Prompt1-03: exploracion de solo lectura de la update 03 + preguntas de diseno | Lectura de `src/` y `question` | API de camara Phaser 4 verificada; decisiones: gatillante = estado de alerta, seguimiento lerp + zoom out, bounds del nivel | Aceptar decisiones de diseno |
 | 2026-10-06 / `068e205` | Redactar spec de la update 03 en `docs/upgrades/03-camara/spec.md` | Edicion de archivo | Spec borrador con 8 criterios y evidencia prevista; sin implementar | Aprobar spec |
 | 2026-10-06 / `068e205` | Prompt2: plan de la update 03 e incrementos 1-4 | Edicion de `src/`, `tests/` y docs | Dominio `camera.ts` (7 tests: zoom monotonico, lerp, smoothT), seguimiento con lerp + zoom por estado, `setBounds` del nivel; 28/28 tests | Aceptar ("seguir con plan.md y Prompt2 como hasta ahora") |
-| 2026-10-06 / `068e205` | Prompt3: contraste de los 8 criterios + evidencia de la 03 | Comandos de validacion + busquedas de regresion + `evidencia.md` | Criterios 1-4, 7, 8 cumplidos; 5 y 6 pendientes de verificacion visual; sin cambios en `patrol.ts`/`alert.ts` | [Pendiente: verificacion visual + commits] |
+| 2026-10-06 / `068e205` | Prompt3: contraste de los 8 criterios + evidencia de la 03 | Comandos de validacion + busquedas de regresion + `evidencia.md` | Criterios 1-4, 7, 8 cumplidos; 5 y 6 pendientes de verificacion visual; sin cambios en `patrol.ts`/`alert.ts` | Aceptar: visto bueno y verificacion visual + commit `d160b96` |
+| 2026-10-06 / `d160b96` | Prompt1-04: exploracion de solo lectura de la update 04 + preguntas de diseno | Lectura de `src/` y `question` | Limitacion confirmada: `isInCone` sin obstaculos; decisiones: raycast reemplaza al cono en la alerta, cajas de cobertura nuevas, cono recortado + indicador, sin acciones nuevas | Aceptar decisiones de diseno |
+| 2026-10-06 / `d160b96` | Redactar spec de la update 04 en `docs/upgrades/04-cobertura/spec.md` | Edicion de archivo | Spec borrador con 12 criterios y evidencia prevista; sin implementar | [Pendiente: revisar spec] |
 
 ## Correcciones y acciones rechazadas
 
