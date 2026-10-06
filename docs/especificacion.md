@@ -13,7 +13,7 @@ Un prototipo jugable donde: la patrulla se anticipa con pausas y mirada direccio
 ## Alcance
 
 - Incluye:
-  - Prototipo base minimo (Phaser 3 + Vite + TypeScript, Vitest) con jugador, un guardia en patrulla, colisiones y meta de escape.
+  - Prototipo base minimo (Phaser 4 + Vite + TypeScript, Vitest) con jugador, un guardia en patrulla, colisiones y meta de escape.
   - Cinco upgrades: `01-patrulla`, `02-alerta`, `03-camara`, `04-cobertura`, `05-escape`.
   - Documentos de proceso: auditoria, especificacion, plan, matriz de permisos, registro, evidencia e informe final.
 - No incluye: audio, menus, multiples niveles, assets producidos, publicacion o despliegue, dependencias fuera de la base del stack, commits en remoto.
@@ -43,7 +43,7 @@ Un prototipo jugable donde: la patrulla se anticipa con pausas y mirada direccio
 
 ## Preguntas abiertas
 
-- Version exacta de Phaser 3 y de las herramientas del stack (se fija al crear el proyecto en el upgrade 01).
+- Version exacta de las herramientas del stack: resuelta en el upgrade 01 (Phaser 4.2.1, Vite 8.3.3, TypeScript 7.0.2, Vitest 5.0.3).
 - Umbrales numericos de alerta (se resuelven en la spec del upgrade 02).
 
 Nota 2026-10-06: el nombre definitivo del proyecto es `Silent Corridor` (confirmado por el estudiante).

@@ -22,7 +22,7 @@
 ## Limites
 
 - Fuera de alcance: audio, menu, multiples niveles, red/publicacion, assets producidos, IA con planificacion.
-- Restricciones tecnicas: sin motor formal (Phaser 3 + Vite + TypeScript); dominio en `src/domain/` independiente de Phaser; sin dependencias fuera de la base del stack; sin push ni despliegue.
+- Restricciones tecnicas: sin motor formal (Phaser 4 + Vite + TypeScript); dominio en `src/domain/` independiente de Phaser; sin dependencias fuera de la base del stack; sin push ni despliegue.
 - Criterios de aceptacion: los cinco upgrades con `spec.md`, `plan.md` y `evidencia.md` en `docs/upgrades/`, cada uno con build, suite y ejecucion verificados.
 
 ## Preguntas abiertas

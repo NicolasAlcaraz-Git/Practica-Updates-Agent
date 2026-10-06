@@ -16,7 +16,7 @@ Este repositorio prepara un proyecto academico de videojuegos independiente de m
 - Estudiante: [PENDIENTE]
 - Materia, comision y anio: [PENDIENTE]
 - Nombre del proyecto: Silent Corridor
-- Motor y version: Sin motor formal; Phaser 3 + Vite + TypeScript (Node 22.19, npm 11.6)
+- Motor y version: Sin motor formal; Phaser 4.2.1 + Vite 8.3.3 + TypeScript 7.0.2 + Vitest 5.0.3 (Node 22.19, npm 11.6)
 - Estado: Fase 0 (documentacion de proceso) completada; prototipo base pendiente
 
 ## Descripcion

@@ -17,7 +17,7 @@ Construir el prototipo base (stack y minijuego) e implementar sobre el la patrul
 ## Alcance
 
 - Incluye:
-  - Scaffold del stack base: Vite + Phaser 3 + TypeScript + Vitest (solo dependencias de la base del stack).
+  - Scaffold del stack base: Vite + Phaser 4 + TypeScript + Vitest (solo dependencias de la base del stack).
   - Escena minima: corredor con paredes, jugador con movimiento (WASD/flechas), colision con paredes, meta de escape al final del corredor.
   - Un guardia con patrulla lineal `A <-> B`: pausa al llegar a cada extremo y durante la pausa barrido lateral de la mirada.
   - Logica de patrulla en `src/domain/` sin dependencia de Phaser, con tests unitarios de Vitest (tiempo inyectado por tick).
@@ -69,7 +69,7 @@ Construir el prototipo base (stack y minijuego) e implementar sobre el la patrul
 | 6 | El jugador se mueve con WASD/flechas, colisiona con paredes y alcanza la meta | Ejecucion manual documentada en `evidencia.md` |
 | 7 | `src/domain/` no importa `phaser` y se testea en Node puro | Tests de dominio corren sin inicializar Phaser (chequeo de imports + suite) |
 | 8 | No hay deteccion ni estado de alerta (se respeta el alcance) | Revision de diff: ausencia de codigos de vision/alerta; sin cambio de estado del jugador |
-| 9 | Diffs acotados y trazables | Commits incrementales; `git diff --stat` por incremento en `evidencia.md` |
+| 9 | Diffs acotados y trazables | Un commit por incremento, solo con autorizacion explicita del estudiante; `git diff --stat` por incremento en `evidencia.md` |
 | 10 | Paquete de documentacion completo | Existencia de `spec.md`, `plan.md` y `evidencia.md` con matriz criterio-evidencia |
 
 ## Evidencia prevista
@@ -83,3 +83,7 @@ Construir el prototipo base (stack y minijuego) e implementar sobre el la patrul
 ## Preguntas abiertas
 
 - Ninguna que bloquee: decisiones tomadas por el estudiante (base + patrulla juntas, tramo lineal A<->B, barrido lateral en pausa, sin deteccion). Valores numericos de ritmo se fijan en `plan.md`.
+
+## Decisiones registradas
+
+- 2026-10-06: version del stack fijada tras el primer `npm install` (Phaser 4.2.1, Vite 8.3.3, TypeScript 7.0.2, Vitest 5.0.3). El estudiante eligio Phaser 4 sobre Phaser 3; spec, GDD, README y especificacion se actualizaron para no contradecir la instalacion real.
