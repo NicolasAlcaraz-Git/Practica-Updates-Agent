@@ -1,6 +1,6 @@
 # Plantilla PIAPC para repositorios individuales
 
-Esta plantilla prepara un repositorio publico e individual para proyectos academicos de videojuegos. Es independiente del motor, lenguaje y tipo de juego.
+Este repositorio prepara un proyecto academico de videojuegos independiente de motor, lenguaje y tipo de juego.
 
 ## Como usarla
 
@@ -15,26 +15,39 @@ Esta plantilla prepara un repositorio publico e individual para proyectos academ
 
 - Estudiante: [PENDIENTE]
 - Materia, comision y anio: [PENDIENTE]
-- Nombre del proyecto: [PENDIENTE]
-- Motor y version: [PENDIENTE]
-- Estado: [PENDIENTE]
+- Nombre del proyecto: Silent Corridor
+- Motor y version: Sin motor formal; Phaser 3 + Vite + TypeScript (Node 22.19, npm 11.6)
+- Estado: Fase 0 (documentacion de proceso) completada; prototipo base pendiente
 
 ## Descripcion
 
-[Explica brevemente el juego o prototipo y su objetivo actual.]
+Prototipo de sigilo y escape en 2D: el jugador atraviesa un corredor evitando a los guardias en patrulla,
+usa cobertura para romper la linea de vision y gestiona un medidor de alerta que crece con el riesgo.
+El ciclo de juego se completa con un escape de ultimo momento cuando la alerta esta al limite.
+
+La practica consiste en cinco upgrades de diseno (patrulla con pausas, medidor de alerta, camara de tension,
+cobertura y ruptura de linea de vision, escape de ultimo momento) desarrollados como intervenciones revisables
+y documentados en `docs/upgrades/`.
 
 ## Requisitos y ejecucion
 
-[Indica el motor, herramientas, versiones y pasos necesarios para abrir o ejecutar el proyecto.]
+- Node.js 22.x y npm 11.x.
+- En PowerShell usar `npm.cmd` (la politica de ejecucion bloquea `npm.ps1`).
+- Comandos previstos (disponibles tras la Fase 1):
+  - `npm.cmd install` — instalar dependencias del stack base.
+  - `npm.cmd run dev` — servidor de desarrollo con recarga.
+  - `npm.cmd run build` — compilacion de produccion.
+  - `npm.cmd run typecheck` — chequeo de tipos (`tsc --noEmit`).
+  - `npm.cmd test` — suite con Vitest.
 
 ## Controles
 
-[Describe los controles disponibles o indica que todavia no existen.]
+[PENDIENTE: se define con el prototipo base. Movimiento con flechas/WASD, interaccion con tecla definida.]
 
 ## Creditos
 
-[Declara assets, sonidos, tipografias, plugins, codigo, referencias y licencias de terceros.]
+- [PENDIENTE: assets, tipografias, plugins y referencias de terceros.]
 
 ## Entrega o demostracion
 
-[Agrega el enlace a una compilacion, video o publicacion cuando la entrega lo requiera.]
+No se publica ni se despliega. La evidencia se registra en `docs/evidencia-pruebas.md` y en `docs/upgrades/*/evidencia.md`.

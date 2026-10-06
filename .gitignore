@@ -2,6 +2,14 @@
 .DS_Store
 Thumbs.db
 
+# Node / Vite (stack base: Phaser + Vite + TypeScript)
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+coverage/
+
 # No versionar credenciales ni configuraciones locales con secretos.
 .env
 .env.*
