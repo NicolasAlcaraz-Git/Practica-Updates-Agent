@@ -17,7 +17,7 @@ Este repositorio prepara un proyecto academico de videojuegos independiente de m
 - Materia, comision y anio: [PENDIENTE]
 - Nombre del proyecto: Silent Corridor
 - Motor y version: Sin motor formal; Phaser 4.2.1 + Vite 8.3.3 + TypeScript 7.0.2 + Vitest 5.0.3 (Node 22.19, npm 11.6)
-- Estado: Fase 0 (documentacion de proceso) completada; prototipo base pendiente
+- Estado: cinco upgrades (01-05) completados, validados y documentados en `docs/upgrades/`; typecheck y build en exit 0, 47/47 tests. Pendiente: datos del estudiante y hash final de entrega.
 
 ## Descripcion
 
@@ -33,7 +33,7 @@ y documentados en `docs/upgrades/`.
 
 - Node.js 22.x y npm 11.x.
 - En PowerShell usar `npm.cmd` (la politica de ejecucion bloquea `npm.ps1`).
-- Comandos previstos (disponibles tras la Fase 1):
+- Comandos disponibles:
   - `npm.cmd install` — instalar dependencias del stack base.
   - `npm.cmd run dev` — servidor de desarrollo con recarga.
   - `npm.cmd run build` — compilacion de produccion.
@@ -42,11 +42,13 @@ y documentados en `docs/upgrades/`.
 
 ## Controles
 
-[PENDIENTE: se define con el prototipo base. Movimiento con flechas/WASD, interaccion con tecla definida.]
+- Movimiento: WASD o flechas (sin otras acciones del jugador).
+- No hay interaccion con teclas adicionales: llegar a la franja de meta cierra el nivel.
 
 ## Creditos
 
-- [PENDIENTE: assets, tipografias, plugins y referencias de terceros.]
+- Sin assets externos: todo se dibuja con formas primitivas de Phaser y texto monoespaciado del sistema.
+- Dependencias (stack base): Phaser 4.2.1, Vite 8.3.3, TypeScript 7.0.2, Vitest 5.0.3.
 
 ## Entrega o demostracion
 

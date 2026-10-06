@@ -48,16 +48,16 @@ Observabilidad	Acciones, resultados, duración, iteraciones y consumo disponible
 Revisión crítica y transferencia	Decisiones humanas, límites y equivalentes fuera de la herramienta
 Un producto ejecutable con trazabilidad insuficiente no satisface el laboratorio.
 
-Repositorio individual: [https://github.com/NicolasAlcaraz-Git/Practica-Updates-Agent.git]
-Commit final: [HASH]
+Repositorio individual: https://github.com/NicolasAlcaraz-Git/Practica-Updates-Agent.git
+Commit final: [hash del commit de cierre — obtenerlo tras commitear y pushear este archivo con: git log -1 --format=%H]
 
 Upgrades completados:
-1. [Patrulla con pausas y mirada direccional] — [RUTA DE LA CARPETA CON SPEC, PLAN Y EVIDENCIA]
-2. [Medidor de alerta y estados del nivel] — [RUTA]
-3. [Cámara dinámica de tensión] — [RUTA]
-4. [NOMBRE] — [RUTA]
-5. [NOMBRE] — [RUTA]
+1. Patrulla con pausas y mirada direccional — docs/upgrades/01-patrulla/ (spec.md, plan.md, evidencia.md)
+2. Medidor de alerta y estados del nivel — docs/upgrades/02-alerta/ (spec.md, plan.md, evidencia.md)
+3. Cámara dinámica de tensión — docs/upgrades/03-camara/ (spec.md, plan.md, evidencia.md)
+4. Cobertura y ruptura de línea de visión — docs/upgrades/04-cobertura/ (spec.md, plan.md, evidencia.md)
+5. Escape de último momento y feedback de alivio — docs/upgrades/05-escape/ (spec.md, plan.md, evidencia.md)
 
-Validación/build: [COMANDOS Y RESULTADOS; RUTA DE EVIDENCIA]
-Evidencia visual o telemetría: [RUTAS/ENLACES CUANDO CORRESPONDA]
-Limitaciones: [RESUMEN CONCRETO]
+Validación/build: npm run typecheck = exit 0; npm run build = exit 0; npm test = 6 archivos, 47 tests, 47 pasados. Salidas por incremento en docs/upgrades/01-patrulla/evidencia.md, docs/upgrades/02-alerta/evidencia.md, docs/upgrades/03-camara/evidencia.md, docs/upgrades/04-cobertura/evidencia.md y docs/upgrades/05-escape/evidencia.md; registro cronológico en docs/registro-intervencion.md.
+Evidencia visual o telemetría: docs/upgrades/01-patrulla/evidencia.md (indicador de mirada), docs/upgrades/02-alerta/evidencia.md (barra/estados y tinte de cámara), docs/upgrades/03-camara/evidencia.md (zoom por estado), docs/upgrades/04-cobertura/evidencia.md (cono recortado, rojo/blanco), docs/upgrades/05-escape/evidencia.md (mensajes de cierre, flash y reset de alerta) — reproducción manual registrada y aprobada por el estudiante.
+Limitaciones: sin capturas adjuntas ni audio (la evidencia visual es la reproducción manual registrada en cada evidencia.md); sin estado de derrota, animaciones ni assets (alcance decidido en cada spec); umbral de escape fijo en 75 y cono aproximado con 16 muestras (no calibrados con jugadores reales); 47 tests de dominio sin pruebas end-to-end de navegador; datos del estudiante (nombre, materia, comisión, año) pendientes en README.md.

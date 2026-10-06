@@ -1,12 +1,12 @@
 # Evidencia — Upgrade 03: Cámara dinámica de tensión
 
-Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **implementacion completa, verificacion Prompt3 hecha; pendiente verificacion visual del estudiante y commits**.
+Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **cerrada — visto bueno del estudiante en el cierre de la update 03 e integrada en `d160b96`**.
 
 ## Versiones
 
 - Version inicial: `068e205` ("Update2 terminada").
-- Estado actual del arbol: incrementos 1-4 **sin commit** (los commits los realiza el estudiante).
-- Nota: tambien quedan sin commit los ajustes de registro/evidencia que confirman la verificacion visual de la update 02.
+- Estado actual del arbol: incrementos 1-4 integrados en `d160b96` ("Update3 terminada"), con push a `origin/main`.
+- Nota: los ajustes de registro/evidencia de la update 02 quedaron integrados en `1e912e1`.
 
 ## Comandos y resultados (2026-10-06, tras el incremento 4)
 
@@ -35,8 +35,8 @@ Diff acumulado pendiente de commit: `src/core/constants.ts` +9, `src/scenes/Game
 | 2 | Zoom por estado distinto y monotonico | Tests: `devuelve el zoom objetivo de cada estado`, `es monotono decreciente: a mayor alerta, menor zoom` | **Cumple** (1 > 0.95 > 0.9 > 0.85) |
 | 3 | `lerp` estable en `[0,1]` y extremos | Tests: `t=0 devuelve el valor actual y t=1 el objetivo`, `interpola el punto medio`, `recorta t fuera de [0,1]`, `smoothT` (2 tests) | **Cumple** |
 | 4 | `src/domain/camera.ts` sin `phaser` | Busqueda de `phaser` en `src/domain/`: 0; suite en Node | **Cumple** |
-| 5 | Camara dentro de los limites del nivel | `setBounds(0,0,GAME_WIDTH,GAME_HEIGHT)` en `GameScene.create`; ejecucion manual en esquinas | **Cumple en codigo**; verificacion visual en esquinas pendiente |
-| 6 | Transicion visual sin cortes (activacion, transicion, estado posterior) | Ejecucion manual | **Pendiente de verificacion visual del estudiante** |
+| 5 | Camara dentro de los limites del nivel | `setBounds(0,0,GAME_WIDTH,GAME_HEIGHT)` en `GameScene.create`; ejecucion manual en esquinas | **Cumple** (visual confirmado en el cierre) |
+| 6 | Transicion visual sin cortes (activacion, transicion, estado posterior) | Ejecucion manual | **Cumple** (visual confirmado en el cierre) |
 | 7 | Sin cambios de gameplay ni de logica previa | `git diff --name-only 068e205 -- src/domain/patrol.ts src/domain/alert.ts` vacio; `updatePlayer/updateAlert` sin cambios de comportamiento; sin `console.` | **Cumple** |
 | 8 | Paquete documental completo | Existencia de `spec.md`, `plan.md`, `evidencia.md` | **Cumple** con este archivo |
 
@@ -49,7 +49,7 @@ Cambios nuevos: seguimiento suave de la cámara y zoom out segun estado. Reprodu
 3. **Estado posterior**: con la alerta en `tranquilo` el zoom queda en 1 y el jugador siempre queda encuadrado al moverse.
 4. **Esquina**: al llevar el jugador a una esquina con alerta maxima no se ve vacio fuera del corredor.
 
-Registro de la observacion del estudiante: pendiente (fila en "Decisiones humanas").
+Registro de la observacion del estudiante: **confirmado 2026-10-06** en el cierre de la update (visto bueno); sin incidencias reportadas de los puntos 1-4.
 
 ## Limites de esta evidencia
 
@@ -65,9 +65,9 @@ Registro de la observacion del estudiante: pendiente (fila en "Decisiones humana
 |---|---|---|---|
 | Aprobar spec de la update 03 | Estudiante | 2026-10-06 | Prompt1-03 + spec |
 | Autorizar plan y ciclo Prompt2 | Estudiante | 2026-10-06 | "seguir con plan.md y Prompt2 como hasta ahora" |
-| Commits de los incrementos 1-4 | Estudiante | Pendiente | El agente no crea commits |
-| Verificacion visual (`npm.cmd run dev`) | Estudiante | Pendiente | Completar seccion visual 1-4 |
+| Commits de los incrementos 1-4 | Estudiante | 2026-10-06 | `d160b96` ("Update3 terminada"), push a `origin/main`; el agente no crea commits |
+| Verificacion visual (`npm.cmd run dev`) | Estudiante | 2026-10-06 | Cierre de la update con visto bueno; sin incidencias reportadas |
 
 ## Decision recomendada del agente
 
-**Integrar** una vez que confirmes la verificacion visual y hagas el commit. Los criterios 1-4, 7 y 8 ya tienen evidencia completa; 5 y 6 quedan a la espera de tu observacion. Si algo se ve mal en pantalla, adjunta esa reproduccion y lo depuro antes del cierre.
+**Integrada**: visto bueno del estudiante (2026-10-06) y `d160b96`. Los 8 criterios tienen evidencia; los visuales (5 y 6) se cerraron con la verificacion manual del estudiante.

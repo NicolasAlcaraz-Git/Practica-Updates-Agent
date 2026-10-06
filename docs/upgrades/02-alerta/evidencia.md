@@ -5,8 +5,7 @@ Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **cerrada — verificacion
 ## Versiones
 
 - Version inicial: `379aa6f` ("Update 1 terminada").
-- Estado actual del arbol: incrementos 1-4 **sin commit** (los commits los realiza el estudiante).
-- Commits intermedios de esta update: ninguno todavia.
+- Estado actual del arbol: incrementos 1-4 integrados en `068e205` ("Update2 terminada"), con push a `origin/main`; arbol limpio al cierre de la update.
 
 ## Comandos y resultados (2026-10-06, tras el incremento 4)
 
@@ -38,8 +37,8 @@ Diff acumulado pendiente de commit: `src/core/constants.ts` +23, `src/scenes/Gam
 | 5 | Riesgo persistente satura en 100 sin reiniciar | Test: `con riesgo persistente se satura en 100 sin reiniciarse` | **Cumple** |
 | 6 | El nivel jamas sale de `[0, 100]` | Test: `invariantes: riesgo fuera de rango y dt invalido` + clamp en `tick` | **Cumple** |
 | 7 | `src/domain/` sin importar `phaser` | Busqueda de `phaser` en `src/domain/*.ts`: 0 coincidencias; suite en Node | **Cumple** |
-| 8 | HUD refleja el estado (barra, rotulo, color) | Codigo en `GameScene.updateAlert`; verificacion visual | **Pendiente de verificacion visual del estudiante** |
-| 9 | Ambiente cambia de tinte segun estado | Overlay `ambient` con alpha 0/0.05/0.10/0.16 desde `ALERT_VIEW`; verificacion visual | **Pendiente de verificacion visual del estudiante** |
+| 8 | HUD refleja el estado (barra, rotulo, color) | Codigo en `GameScene.updateAlert`; verificacion visual | **Cumple** (confirmado: puntos 1-3) |
+| 9 | Ambiente cambia de tinte segun estado | Overlay `ambient` con alpha 0/0.05/0.10/0.16 desde `ALERT_VIEW`; verificacion visual | **Cumple** (confirmado: puntos 1-3, tinte en 2 y 3) |
 | 10 | Sin cambios en la patrulla ni raycast | `git diff --name-only 379aa6f -- src/domain/patrol.ts` vacio; busqueda de `raycast|obstacle|lineOfSight`: 0; busqueda de `console.`: 0 (sin instrumentacion residual) | **Cumple** |
 | 11 | Paquete documental completo | Existencia de `spec.md`, `plan.md`, `evidencia.md` | **Cumple** con este archivo |
 
@@ -55,7 +54,7 @@ Registro de la observacion del estudiante: **confirmado 2026-10-06** — "la bar
 
 ## Limites de esta evidencia
 
-- Los criterios 8 y 9 dependen de la reproduccion visual que no puede ejecutar el agente (sin navegador en el entorno).
+- Los criterios 8 y 9 se cerraron con la reproduccion manual confirmada por el estudiante (puntos 1-3).
 - La fuente de riesgo es proximidad + cono, no line de vision con obstaculos: el comportamiento real de "te vio / no te vio" llega con el upgrade 04.
 - El cono no distingue paredes: el guardia puede "mirar a traves" de un muro hasta entonces; queda registrado como limite conocido y fuera de alcance de esta spec.
 - Tasas y radios son valores iniciales del plan; no se calibraron con jugadores reales.
@@ -67,9 +66,9 @@ Registro de la observacion del estudiante: **confirmado 2026-10-06** — "la bar
 |---|---|---|---|
 | Aprobar spec de la update 02 | Estudiante | 2026-10-06 | Prompt1-02 + spec |
 | Autorizar plan y ciclo Prompt2 | Estudiante | 2026-10-06 | "seguir Prompt2 como hicimos anteriormente" |
-| Commits de los incrementos 1-4 | Estudiante | Pendiente | El agente no crea commits |
+| Commits de los incrementos 1-4 | Estudiante | 2026-10-06 | `068e205` ("Update2 terminada"), push a `origin/main`; el agente no crea commits |
 | Verificacion visual (`npm.cmd run dev`) | Estudiante | 2026-10-06 | Confirmada: puntos 1-3 OK (commit `068e205`) |
 
 ## Decision recomendada del agente
 
-**Integrar** una vez que confirmes la verificacion visual y hagas el commit. Los criterios 1-7, 10 y 11 ya tienen evidencia completa; 8 y 9 quedan a la espera de tu observacion. Si algo se ve mal en pantalla, adjunta esa reproduccion y lo depuro antes del cierre.
+**Integrada**: confirmacion visual del estudiante (2026-10-06, puntos 1-3) y `068e205`. Los 11 criterios tienen evidencia.

@@ -1,11 +1,11 @@
 # Evidencia — Upgrade 04: Cobertura y ruptura de línea de visión
 
-Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **implementacion completa, verificacion Prompt3 hecha; pendiente verificacion visual del estudiante y commits**.
+Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **cerrada — visto bueno del estudiante ("todo correcto", 2026-10-06) e integrada en `bd4e500`**.
 
 ## Versiones
 
 - Version inicial: `1e912e1` ("Update4 validada").
-- Estado actual del arbol: incrementos 1-4 **sin commit** (los commits los realiza el estudiante).
+- Estado actual del arbol: incrementos 1-4 integrados en `bd4e500` ("Update4 terminada"), con push a `origin/main`; arbol limpio al cierre de la update.
 
 ## Comandos y resultados (2026-10-06, tras el incremento 4)
 
@@ -40,10 +40,10 @@ Diff acumulado pendiente de commit: `src/core/constants.ts` +9/-1, `src/scenes/G
 | 3 | `rayHitDistance` devuelve primer impacto o `maxDist` | Tests: `devuelve la distancia al primer impacto` (39.5), `sin impacto devuelve maxDist`, `direccion cero devuelve 0` | **Cumple** |
 | 4 | `visibleToGuard` exige cono y linea libre | Tests: visible al frente; en cono tras caja = oculto; fuera de cono = oculto; mas alla del radio = oculto | **Cumple** |
 | 5 | Sin vision el riesgo es 0 y la alerta decae | Test de integracion: `riesgo 0 cuando el jugador no esta visible, y AlertSystem baja` (sube a 70, decae a `tranquilo` con riesgo 0) | **Cumple** |
-| 6 | Cajas en el nivel, se chocan y cortan la vision | `COVERS` + doble test (caja bloquea LOS y `visibleToGuard`), colision sobre `OBSTACLES` en `collides`, dibujo en `create`; verificacion manual | **Cumple en codigo**; colision visual pendiente |
-| 7 | Cono recortado se dibuja y se mueve con el guardia | `sightPolygon` (tests de estructura: 17 puntos, recorte central con muro, `[]` sin gaze) + ejecucion manual | **Cumple en dominio**; visual pendiente |
-| 8 | Indicador rojo/blanco del jugador | `updateAlert` (`setFillStyle(visible ? 0xf44336 : 0xe8eef5)`); ejecucion manual | **Pendiente de verificacion visual** |
-| 9 | La alerta deja de subir al romper la linea y decae | Test de dominio (criterio 5) + ejecucion manual | **Cumple en dominio**; visual pendiente |
+| 6 | Cajas en el nivel, se chocan y cortan la vision | `COVERS` + doble test (caja bloquea LOS y `visibleToGuard`), colision sobre `OBSTACLES` en `collides`, dibujo en `create`; verificacion manual | **Cumple** (visual confirmado en el cierre) |
+| 7 | Cono recortado se dibuja y se mueve con el guardia | `sightPolygon` (tests de estructura: 17 puntos, recorte central con muro, `[]` sin gaze) + ejecucion manual | **Cumple** (visual confirmado en el cierre) |
+| 8 | Indicador rojo/blanco del jugador | `updateAlert` (`setFillStyle(visible ? 0xf44336 : 0xe8eef5)`); ejecucion manual | **Cumple** (visual confirmado en el cierre) |
+| 9 | La alerta deja de subir al romper la linea y decae | Test de dominio (criterio 5) + ejecucion manual | **Cumple** (visual confirmado en el cierre) |
 | 10 | Sin cambios en `patrol.ts`, `alert.ts` ni camara/HUD | `git diff --name-only 1e912e1 -- src/domain/patrol.ts src/domain/alert.ts` vacio; camara/HUD sin ediciones en este upgrade | **Cumple** |
 | 11 | `src/domain/` sin `phaser` | Busqueda en `src/domain/*.ts`: 0; suite en Node | **Cumple** |
 | 12 | Paquete documental completo | Existencia de `spec.md`, `plan.md`, `evidencia.md` | **Cumple** con este archivo |
@@ -58,7 +58,7 @@ Cambios nuevos: cajas de cobertura, cono amarillo translucido del guardia, color
 2. **Transicion**: al entrar al cono con linea libre el jugador pasa a rojo y la alerta sube; al meterte detras de una caja o muro el jugador vuelve a blanco, el cono se corta y la alerta deja de subir.
 3. **Estado posterior**: alejandote, la alerta decae hasta `tranquilo`; la caja bloquea el paso (no se atraviesa).
 
-Registro de la observacion del estudiante: pendiente (fila en "Decisiones humanas").
+Registro de la observacion del estudiante: **confirmado 2026-10-06** — aprobacion del cierre ("todo correcto, listo para la implementacion de 05"); sin incidencias reportadas de los puntos 1-3.
 
 ## Limites de esta evidencia
 
@@ -74,9 +74,9 @@ Registro de la observacion del estudiante: pendiente (fila en "Decisiones humana
 |---|---|---|---|
 | Aprobar spec de la update 04 | Estudiante | 2026-10-06 | Prompt1-04 + spec |
 | Autorizar plan y ciclo Prompt2 | Estudiante | 2026-10-06 | "ya hice commit... apruebo la spec" |
-| Commits de los incrementos 1-4 | Estudiante | Pendiente | El agente no crea commits |
-| Verificacion visual (`npm.cmd run dev`) | Estudiante | Pendiente | Completar seccion visual 1-3 |
+| Commits de los incrementos 1-4 | Estudiante | 2026-10-06 | `bd4e500` ("Update4 terminada"), push a `origin/main`; el agente no crea commits |
+| Verificacion visual (`npm.cmd run dev`) | Estudiante | 2026-10-06 | "todo correcto"; sin incidencias reportadas |
 
 ## Decision recomendada del agente
 
-**Integrar** una vez que confirmes la verificacion visual y hagas el commit. Los criterios 1-5, 10, 11 y 12 ya tienen evidencia completa; 6-9 quedan a la espera de tu observacion. Si algo se ve mal en pantalla, adjunta esa reproduccion y lo depuro antes del cierre.
+**Integrada**: visto bueno del estudiante (2026-10-06) y `bd4e500`. Los 12 criterios tienen evidencia; los visuales (6-9) se cerraron con la verificacion manual del estudiante.

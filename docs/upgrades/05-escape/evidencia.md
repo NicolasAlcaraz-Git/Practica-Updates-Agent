@@ -1,11 +1,12 @@
 # Evidencia — Upgrade 05: Escape de último momento y feedback de alivio
 
-Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **implementacion completa, verificacion Prompt3 hecha; pendiente verificacion visual del estudiante y commits**.
+Proyecto: Silent Corridor. Fecha: 2026-10-06. Estado: **cerrada — visto bueno del estudiante ("le doy el visto bueno", 2026-10-06) e integrada en `ac55177`**.
 
 ## Versiones
 
 - Version inicial: `bd4e500` ("Update4 terminada", incluye spec y plan de la 05).
-- Estado actual del arbol: incrementos 1-3 **sin commit** (los commits los realiza el estudiante). Archivos: `src/domain/escape.ts`, `tests/escape.test.ts`, `src/core/constants.ts`, `src/scenes/GameScene.ts`, `docs/upgrades/05-escape/{plan,evidencia}.md`, `docs/registro-intervencion.md`.
+- Incrementos 1-3 integrados en `ac55177` ("Update5 terminada"), con push a `origin/main`; arbol limpio al cierre de la update.
+- Version final de la entrega: commit de cierre de esta revision (ejecutar tras los cambios de ENTREGA.md/registro; el hash definitivo va en `ENTREGA.md` y en la plataforma).
 
 ## Comandos y resultados (2026-10-06, tras el incremento 3)
 
@@ -52,7 +53,7 @@ Cambios nuevos: mensajes de cierre, flash de camara, barra que se reinicia. Repr
 3. **Estado posterior**: despues del escape la alerta no vuelve a subir aunque el guardia te vea; el jugador sigue moviendose (no se congela).
 4. **Unicidad**: caminar sobre la meta de nuevo no repite mensaje ni flash.
 
-Registro de la observacion del estudiante: pendiente (fila en "Decisiones humanas").
+Registro de la observacion del estudiante: visto bueno de cierre **confirmado 2026-10-06** ("le doy el visto bueno"), sin incidencias reportadas de los puntos 1-4 (fila en "Decisiones humanas").
 
 ## Limites de esta evidencia
 
@@ -68,9 +69,9 @@ Registro de la observacion del estudiante: pendiente (fila en "Decisiones humana
 |---|---|---|---|
 | Aprobar spec de la update 05 (4 decisiones + 2 derivadas) | Estudiante | 2026-10-06 | "todo correcto, listo para la implementacion de 05" |
 | Commit de la 04 | Estudiante | 2026-10-06 | `bd4e500` |
-| Commits de los incrementos 1-3 de la 05 | Estudiante | Pendiente | El agente no crea commits |
-| Verificacion visual (`npm.cmd run dev`) | Estudiante | Pendiente | Completar seccion visual 1-4 |
+| Commits de los incrementos 1-3 de la 05 | Estudiante | 2026-10-06 | `ac55177` ("Update5 terminada"), push a `origin/main`; el agente no crea commits |
+| Verificacion visual (`npm.cmd run dev`) y visto bueno de cierre | Estudiante | 2026-10-06 | "le doy el visto bueno"; sin incidencias reportadas |
 
 ## Decision recomendada del agente
 
-**Integrar** una vez que confirmes la verificacion visual (4 puntos) y hagas el commit. Los criterios 1-4, 8-11 ya tienen evidencia completa; 5-7 quedan a la espera de tu observacion. Con esto se cierra la ultima update del plan (`01 -> 02 -> 03 -> 04 -> 05`) y queda el cierre general: completar tu nombre/materia/comision/anio en `README.md`.
+**Integrada**: visto bueno del estudiante (2026-10-06) e `ac55177`. Los criterios 1-4 y 8-11 tienen evidencia completa; 5-7 se cerraron con la verificacion manual del estudiante. Es la ultima update del plan (`01 -> 02 -> 03 -> 04 -> 05`); pendiente solo el cierre general: datos del estudiante en `README.md` y hash final en `ENTREGA.md`.
