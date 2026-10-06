@@ -1,3 +1,5 @@
+import type { AlertState } from '../domain/alert';
+
 export const GAME_TITLE = 'Silent Corridor';
 
 export const GAME_WIDTH = 960;
@@ -32,3 +34,24 @@ export const GUARD_SPEED = 80;
 export const GUARD_PAUSE_MS = 1200;
 
 export const GUARD_SWEEP_HALF_MS = 400;
+
+export const RISK_RADIUS = 260;
+
+export const RISK_CONE_HALF_DEG = 50;
+
+export const RISK_CONE_BONUS = 1.6;
+
+export const ALERT_CONFIG = {
+  risePerSecond: 35,
+  fallPerSecond: 18,
+  sospechaAt: 25,
+  busquedaAt: 50,
+  alertaMaximaAt: 75,
+} as const;
+
+export const ALERT_VIEW: Record<AlertState, { color: number; alpha: number }> = {
+  tranquilo: { color: 0x4caf50, alpha: 0 },
+  sospecha: { color: 0xffeb3b, alpha: 0.05 },
+  busqueda: { color: 0xff9800, alpha: 0.1 },
+  'alerta maxima': { color: 0xf44336, alpha: 0.16 },
+};

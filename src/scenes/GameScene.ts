@@ -1,6 +1,11 @@
 import Phaser from 'phaser';
+import { AlertSystem, computeRisk, isInCone } from '../domain/alert';
 import { Patrol, type PatrolConfig } from '../domain/patrol';
 import {
+  ALERT_CONFIG,
+  ALERT_VIEW,
+  GAME_HEIGHT,
+  GAME_WIDTH,
   GOAL,
   GUARD_FROM,
   GUARD_PAUSE_MS,
@@ -10,6 +15,9 @@ import {
   PLAYER_RADIUS,
   PLAYER_SPEED,
   PLAYER_START,
+  RISK_CONE_BONUS,
+  RISK_CONE_HALF_DEG,
+  RISK_RADIUS,
   WALLS,
 } from '../core/constants';
 
@@ -29,6 +37,10 @@ export class GameScene extends Phaser.Scene {
   private guard!: Phaser.GameObjects.Arc;
   private gazeIndicator!: Phaser.GameObjects.Arc;
   private patrol!: Patrol;
+  private alert!: AlertSystem;
+  private alertBar!: Phaser.GameObjects.Rectangle;
+  private alertLabel!: Phaser.GameObjects.Text;
+  private ambient!: Phaser.GameObjects.Rectangle;
   private keys!: Keys;
   private goalReached = false;
 
@@ -50,7 +62,32 @@ export class GameScene extends Phaser.Scene {
     this.player = this.add.circle(PLAYER_START.x, PLAYER_START.y, PLAYER_RADIUS, 0xe8eef5);
 
     this.patrol = new Patrol(GUARD_CONFIG);
+    this.alert = new AlertSystem(ALERT_CONFIG);
     const start = this.patrol.getPosition();
+
+    this.ambient = this.add
+      .rectangle(GAME_WIDTH / 2, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0xd02020)
+      .setAlpha(0)
+      .setDepth(10);
+
+    const barX = 60;
+    const barY = 13;
+    const barW = 240;
+    const barH = 14;
+    this.add
+      .rectangle(barX + barW / 2, barY + barH / 2, barW, barH, 0x000000, 0.6)
+      .setDepth(20);
+    this.alertBar = this.add
+      .rectangle(barX, barY + barH / 2, barW, barH, ALERT_VIEW.tranquilo.color)
+      .setOrigin(0, 0.5)
+      .setDepth(21);
+    this.alertLabel = this.add
+      .text(barX + barW + 12, barY, 'tranquilo 0', {
+        fontFamily: 'monospace',
+        fontSize: '16px',
+        color: '#e8eef5',
+      })
+      .setDepth(21);
     this.guard = this.add.circle(start.x, start.y, PLAYER_RADIUS, 0xb03030);
     this.gazeIndicator = this.add.circle(start.x, start.y, 5, 0xf0c040);
 
@@ -63,6 +100,29 @@ export class GameScene extends Phaser.Scene {
   update(_time: number, delta: number): void {
     this.updateGuard(delta);
     this.updatePlayer(delta);
+    this.updateAlert(delta);
+  }
+
+  private updateAlert(delta: number): void {
+    const guardPos = this.patrol.getPosition();
+    const playerPos = { x: this.player.x, y: this.player.y };
+    const distance = Math.hypot(playerPos.x - guardPos.x, playerPos.y - guardPos.y);
+    const inCone = isInCone(
+      guardPos,
+      this.patrol.getGazeDirection(),
+      playerPos,
+      RISK_CONE_HALF_DEG,
+    );
+    const risk = computeRisk(distance, inCone, RISK_RADIUS, RISK_CONE_BONUS);
+    this.alert.tick(delta, risk);
+
+    const level = this.alert.getLevel();
+    const state = this.alert.getState();
+    const view = ALERT_VIEW[state];
+    this.alertBar.scaleX = Math.max(level / 100, 0.001);
+    this.alertBar.setFillStyle(view.color);
+    this.alertLabel.setText(`${state} ${Math.round(level)}`);
+    this.ambient.setAlpha(view.alpha);
   }
 
   private updateGuard(delta: number): void {

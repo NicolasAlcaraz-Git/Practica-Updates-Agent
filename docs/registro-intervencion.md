@@ -29,7 +29,11 @@ Registra cada ciclo relevante de herramienta. No copies razonamientos internos d
 | 2026-10-06 / `1fb8cd3` | Redactar spec del upgrade 01 en `docs/upgrades/01-patrulla/spec.md` | Edicion de archivo | Spec borrador con 10 criterios y evidencia prevista; sin implementar | Aceptar (commit `127695a`) |
 | 2026-10-06 / `127695a` | Prompt2: incremento 1 (scaffold stack base) + Prompt3 checkpoint | `npm init`, `npm install`, edicion de configs y `evidencia.md` | typecheck/build/test exit 0; checkpoint de criterios 1, 2, 8 | Aceptar (commit `dcf1965`) |
 | 2026-10-06 / `dcf1965` | Completar la update 01: incrementos 2-5 | Edicion de `src/` y `tests/` | Escena del corredor, dominio `Patrol` (7 tests), guardia integrado con indicador de mirada, constantes `GUARD_*` | Aceptar ("termina la update 01") |
-| 2026-10-06 / `dcf1965` | Prompt3: contraste de los 10 criterios + evidencia final | Comandos de validacion + edicion de `evidencia.md` | 8/8 tests; criterios 1,2,3,7,8,10 cumplidos; 4,5,6 parciales (visual); 9 pendiente de commit | [Pendiente: verificacion visual + commits] |
+| 2026-10-06 / `dcf1965` | Prompt3: contraste de los 10 criterios + evidencia final | Comandos de validacion + edicion de `evidencia.md` | 8/8 tests; criterios 1,2,3,7,8,10 cumplidos; 4,5,6 parciales (visual); 9 pendiente de commit | Aceptar (commits del estudiante; verificacion visual reportada al cerrar) |
+| 2026-10-06 / `379aa6f` | Prompt1-02: exploracion de solo lectura de la update 02 + preguntas de diseno | Lectura de `src/` y `question` | Decisiones: fuente proximidad+cono, 4 estados (25/50/75), consecuencias HUD+ambiente, update 01 commiteada en `379aa6f` | Aceptar decisiones de diseno |
+| 2026-10-06 / `379aa6f` | Redactar spec de la update 02 en `docs/upgrades/02-alerta/spec.md` | Edicion de archivo | Spec borrador con 11 criterios y evidencia prevista; sin implementar | Aprobar spec |
+| 2026-10-06 / `379aa6f` | Prompt2: plan de la update 02 e incrementos 1-4 | Edicion de `src/`, `tests/` y docs | Dominio `AlertSystem` (13 tests), riesgo por proximidad+cono en escena, HUD + tinte de ambiente; 21/21 tests, typecheck/build exit 0 | Aceptar ("seguir Prompt2 como hicimos anteriormente") |
+| 2026-10-06 / `379aa6f` | Prompt3: contraste de los 11 criterios + evidencia de la 02 | Comandos de validacion + busquedas de regresion + `evidencia.md` | Criterios 1-7, 10, 11 cumplidos; 8 y 9 pendientes de verificacion visual; sin `console.`, sin cambios en `patrol.ts` | [Pendiente: verificacion visual + commits] |
 
 ## Correcciones y acciones rechazadas
 
